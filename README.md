@@ -2,7 +2,7 @@
 
 ** Employee Summary HTML Generator**   
 
-## Author
+**## Author**
 
 Kendall Masterson
 
