@@ -29,9 +29,9 @@ function promptUser(answers) {
         if (answers.role === "Manager") {
           buildManager();
         } else if (answers.role === "Engineer") {
-          addEngineer();
+          buildEngineer();
         } else if (answers.role === "Intern") {
-          addIntern();
+          buildIntern();
         }
       });
   }
@@ -120,6 +120,85 @@ function buildManager(answers) {
                 console.log(err);
             });
 }
+
+function buildEngineer(answers) {
+    console.log("Please build your engineer")
+    inquirer.prompt([
+        {
+          type: "input",
+          message: "What is the engineer's name?",
+          name: "engineerName",
+          validate: function (answer) {
+            if (answer !== "") {
+                return true;
+            } else {
+                return "Must input a name!"
+            }
+        }
+        },
+        {
+          type: "input",
+          message: "What is the engineer's ID #?",
+          name: "engineerid",
+          validate: function (answer) {
+            if (answer !== "") {
+                return true;
+            } else {
+                return "Must input an ID #!"
+            }
+        }
+        },
+        {
+          type: "input",
+          message: "What is the engineer's email address?",
+          name: "engineerEmail",
+          validate: function (answer) {
+            if (answer !== "") {
+                return true;
+            } else {
+                return "Must input an email!"
+            }
+        }
+        },
+        {
+          type: "input",
+          message: "What is the their github link?",
+          name: "github",
+          validate: function (answer) {
+            if (answer !== "") {
+                return true;
+            } else {
+                return "Must input a github link!"
+            }
+        }
+        },
+        {
+          type: "list",
+          message: "Would you like to add another employee?",
+          name: "addEmployee",
+          choices: ["yes", "no"],
+        },
+      ])
+      .then((answers) => {
+        let engineer = new Engineer(
+          answers.engineerName,
+          answers.engineerid,
+          answers.engineerEmail,
+          answers.github
+        );
+        employees.push(engineer);
+        console.log(employees);
+        if (answers.addEmployee === "yes") {
+          promptUser();
+        } else {
+          renderHTML();
+        }
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  }
+  
 
 
 function buildTeam() {
