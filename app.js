@@ -4,7 +4,7 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
-const Employee = [];
+const employees = [];
 
 
 const render = require("./lib/htmlRenderer");
