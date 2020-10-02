@@ -37,7 +37,7 @@ Here is a link to my demo:
 
 You can use the tests in the test folder.  You can run tests by running `npm run test` in your command line.  Here is a screenshot of when I ran the tests.
 
-
+![](img/test.screenshot.png)
 
 
 
