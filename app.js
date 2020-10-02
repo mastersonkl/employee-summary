@@ -4,11 +4,8 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
-const teamMembers = [];
+const employees = [];
 
-
-const OUTPUT_DIR = path.resolve(__dirname, "output");
-const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 const util = require("util");
@@ -199,13 +196,79 @@ function buildEngineer(answers) {
       });
   }
   
-
-
-function buildTeam() {
-    buildManager()
-    buildEMployee....
-}
-
-buildTeam();
-
-render(teamMembers)
+  function buildIntern(answers) {
+    console.log("Please build your intern")
+    inquirer.prompt([
+        {
+          type: "input",
+          message: "What is the Intern's name?",
+          name: "internName",
+          validate: function (answer) {
+            if (answer !== "") {
+                return true;
+            } else {
+                return "Must input a name!"
+            }
+        }
+        },
+        {
+          type: "input",
+          message: "What is the intern's ID #?",
+          name: "internid",
+          validate: function (answer) {
+            if (answer !== "") {
+                return true;
+            } else {
+                return "Must input an ID #!"
+            }
+        }
+        },
+        {
+          type: "input",
+          message: "What is the intern's email address?",
+          name: "internEmail",
+          validate: function (answer) {
+            if (answer !== "") {
+                return true;
+            } else {
+                return "Must input an email!"
+            }
+        }
+        },
+        {
+          type: "input",
+          message: "What school does the intern attend?",
+          name: "school",
+        },
+        {
+          type: "list",
+          message: "Would you like to add another employee?",
+          name: "addEmployee",
+          choices: ["yes", "no"],
+        },
+      ])
+      .then((answers) => {
+        let intern = new Intern(
+          answers.internName,
+          answers.internid,
+          answers.internEmail,
+          answers.school
+        );
+        employees.push(intern);
+        console.log(employees);
+        if (answers.addEmployee === "yes") {
+          promptUser();
+        } else {
+          renderHTML();
+        }
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  }
+  
+  function renderHTML() {
+    return writeFileAsync("team.html", render(employees), "utf-8");
+  }
+  
+  promptUser();
