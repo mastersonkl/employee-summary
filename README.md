@@ -1,6 +1,6 @@
 # employee-summary
 
-**# Employee Summary HTML Generator**   
+** Employee Summary HTML Generator**   
 
 ## Author
 
