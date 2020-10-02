@@ -1,8 +1,8 @@
 # employee-summary
 
-** Employee Summary HTML Generator**   
+<h2> Employee Summary HTML Generator </h2> 
 
-** Author**
+<h2> Author </h2>
 
 Kendall Masterson
 
@@ -10,7 +10,7 @@ https://github.com/mastersonkl
 
 masterson.kendall@gmail.com
 
-**## Description**
+<h2> Description </h2>
 
 This project is a CLI used to generate a HTML file with the user's information that they input. The user will be able to put in information for Manager, Engineer, and Interns and the corresponding details. When all employee information is put in the HTML file will automatically generate and will be called team.html. The HTML is formatted so that each card header is a different color corresponding with the employees role. 
 **## Table of Contents**
